@@ -24,7 +24,7 @@ public class ContactsActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.contacts, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -33,7 +33,8 @@ public class ContactsActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch(item.getItemId()) {
-			case R.id.action_settings: return true;
+			case R.id.action_settings: 
+				return true;
 			case android.R.id.home:
 				NavUtils.navigateUpFromSameTask(this);
 				return true;
@@ -43,16 +44,16 @@ public class ContactsActivity extends ActionBarActivity {
 			case R.id.action_delete:
 				deleteContacts();
 				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 	
 	private void addContact() {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		LayoutInflater inflater = getLayoutInflater();
 
-		alert.setTitle("Name");
-		alert.setMessage("Phone");
+		alert.setTitle("New sober person");
 		
 		alert.setView(inflater.inflate(R.layout.contact_popup, null));
 		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
