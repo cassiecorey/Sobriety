@@ -1,6 +1,7 @@
 package hackthenorth.sobriety;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,21 +35,18 @@ public class LaunchActivity extends Activity {
 	}
 
     public void callSomebody(View v){
-
-
+		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
     }
 
     public void openCalculator(View v){
-
-
-
+		Intent intent = new Intent(this, CalculatorActivity.class);
+		startActivity(intent);
     }
 
     public void getHome(View v){
-
-
-
-
+		Intent intent = new Intent(this, GetHomeActivity.class);
+		startActivity(intent);
     }
 
 

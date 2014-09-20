@@ -2,9 +2,14 @@ package hackthenorth.sobriety;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class ContactsActivity extends ActionBarActivity {
 
@@ -32,7 +37,45 @@ public class ContactsActivity extends ActionBarActivity {
 			case android.R.id.home:
 				NavUtils.navigateUpFromSameTask(this);
 				return true;
-			}
+			case R.id.action_new:
+				addContact();
+				return true;
+			case R.id.action_delete:
+				deleteContacts();
+				return true;
+		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void addContact() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		LayoutInflater inflater = getLayoutInflater();
+
+		alert.setTitle("Name");
+		alert.setMessage("Phone");
+		
+		alert.setView(inflater.inflate(R.layout.contact_popup, null));
+		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
+		final EditText phoneIn = (EditText) findViewById(R.id.contact_phone);
+
+		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  Editable contactName = nameIn.getText();
+		  Editable contactPhone = phoneIn.getText();
+		  // Do something with value!
+		  }
+		});
+
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    // Canceled.
+		  }
+		});
+
+		alert.show();
+	}
+	
+	private void deleteContacts() {
+		
 	}
 }
