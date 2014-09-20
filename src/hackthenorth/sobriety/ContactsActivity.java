@@ -7,6 +7,7 @@ import java.util.List;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
+import android.text.InputType;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -84,7 +85,7 @@ public class ContactsActivity extends ActionBarActivity {
 	}
 
 	private void addContact() {
-		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		/*AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		LayoutInflater inflater = getLayoutInflater();
 
 		alert.setTitle("New sober person");
@@ -107,7 +108,24 @@ public class ContactsActivity extends ActionBarActivity {
 			}
 		});
 
-		alert.show();
+		alert.show();*/
+		
+		final EditText input = new EditText(this);
+		input.setHint("Your name");
+		input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+
+		new AlertDialog.Builder(this)
+		.setTitle("You got a new highscore!")
+		.setView(input)
+		.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				saveScore(input.getText().toString(), score);
+			}
+		}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// Do nothing.
+			}
+		}).show();
 	}
 
 	private class StableArrayAdapter extends ArrayAdapter<String> {
