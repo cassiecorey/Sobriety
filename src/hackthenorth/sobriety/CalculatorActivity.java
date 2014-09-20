@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.format.DateFormat;
@@ -77,12 +78,25 @@ public class CalculatorActivity extends Activity {
 	}
 	
 public void LBS(View v){
-		
-		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
-		weightPicker.setMinValue(40);
-		weightPicker.setMaxValue(185);
-		weightPicker.setValue(70);
-		weightPicker.setWrapSelectorWheel(false);
+	
+		Button button = (Button) findViewById(R.id.weight_type);
+		if(button.getText().toString() == "LBS"){
+			button.setText("Kgs");
+			NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+			weightPicker.setMinValue(40);
+			weightPicker.setMaxValue(185);
+			weightPicker.setValue(70);
+			weightPicker.setWrapSelectorWheel(false);
+		}
+		else{
+			button.setText("LBS");
+			NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+			weightPicker.setMinValue(85);
+			weightPicker.setMaxValue(400);
+			weightPicker.setValue(150);
+			weightPicker.setWrapSelectorWheel(false);
+			
+		}
 		
 		
 	}
@@ -152,6 +166,14 @@ public void LBS(View v){
 			BAC = (.806*2*1.2)/(weightLBS -.58)-(.015*1);
 		}
 		
+		
+		
 	}
+	
+	public void callSomebody(View v){
+		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
+    }
+
 	
 }
