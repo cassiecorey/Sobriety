@@ -22,6 +22,7 @@
             android:orientation="vertical" >
 
             <Button
+                android:id="@+id/male"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
@@ -43,6 +44,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/female"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
