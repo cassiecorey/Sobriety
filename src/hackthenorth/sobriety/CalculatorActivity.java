@@ -17,11 +17,6 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
-
-
-
-
-
 public class CalculatorActivity extends Activity {
 	ViewFlipper viewFlipper;
 	private int weightLBS;

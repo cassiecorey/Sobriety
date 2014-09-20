@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GetHomeActivity extends Activity {
 
@@ -35,5 +36,30 @@ public class GetHomeActivity extends Activity {
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	public void walk(View v) {
+		setContentView(R.layout.map_activity);
+		
+		// Get a handle to the Map Fragment
+		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		
+		LatLng home = new LatLng(-33.867, 151.206);
+		map.setMyLocationEnabled(true);
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
+		
+		map.addMarker(new MarkerOptions()
+			.title("Home")
+			.snippet("Stick together!")
+			.position(home));
+		
+	}
+	
+	public void catchABus(View v) {
+		
+	}
+	
+	public void callACab(View v) {
+		
 	}
 }
