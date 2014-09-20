@@ -2,6 +2,9 @@ package hackthenorth.sobriety;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,30 +31,17 @@ public class GetHomeActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		switch(item.getItemId()) {
-			case R.id.action_settings: return true;
-			case android.R.id.home:
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		if(item.getItemId()==R.id.action_settings) {
+			return true;
+		} else if(item.getItemId()==R.id.home) {
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		} else {
+			return super.onOptionsItemSelected(item);
 		}
 	}
 	
 	public void walk(View v) {
-		setContentView(R.layout.map_activity);
-		
-		// Get a handle to the Map Fragment
-		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		
-		LatLng home = new LatLng(-33.867, 151.206);
-		map.setMyLocationEnabled(true);
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
-		
-		map.addMarker(new MarkerOptions()
-			.title("Home")
-			.snippet("Stick together!")
-			.position(home));
 		
 	}
 	

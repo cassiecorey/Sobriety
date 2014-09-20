@@ -38,5 +38,7 @@
             android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
     </application>
+    
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>

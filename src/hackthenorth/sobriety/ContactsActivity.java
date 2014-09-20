@@ -1,15 +1,24 @@
 package hackthenorth.sobriety;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class ContactsActivity extends ActionBarActivity {
 
@@ -18,6 +27,31 @@ public class ContactsActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacts);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		ListView listview = (ListView) findViewById(R.id.list);
+
+		//Creating a fake list of stuff
+		String[] values = new String[] { "Cassie", "Brian", "Greg",
+				"Becca", "Sarah", "Emily", "Ryan", "Meghan",
+				"Laura", "Tim", "Kevin", "Mark"};
+		final ArrayList<String> list = new ArrayList<String>();
+		for (int i = 0; i < values.length; ++i) {
+			list.add(values[i]);
+		}
+
+		final StableArrayAdapter adapter = new StableArrayAdapter(this,
+				android.R.layout.simple_list_item_1, list);
+		listview.setAdapter(adapter);
+
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				//Here is where you open the phone app and call someone
+			}
+
+		});
 	}
 
 	@Override
@@ -33,50 +67,75 @@ public class ContactsActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch(item.getItemId()) {
-			case R.id.action_settings: 
-				return true;
-			case android.R.id.home:
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
-			case R.id.action_new:
-				addContact();
-				return true;
-			case R.id.action_delete:
-				deleteContacts();
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		case R.id.action_settings: 
+			return true;
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		case R.id.action_new:
+			addContact();
+			return true;
+		case R.id.action_delete:
+			deleteContacts();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private void addContact() {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		LayoutInflater inflater = getLayoutInflater();
 
 		alert.setTitle("New sober person");
-		
+
 		alert.setView(inflater.inflate(R.layout.contact_popup, null));
 		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
 		final EditText phoneIn = (EditText) findViewById(R.id.contact_phone);
 
 		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int whichButton) {
-		  Editable contactName = nameIn.getText();
-		  Editable contactPhone = phoneIn.getText();
-		  // Do something with value!
-		  }
+			public void onClick(DialogInterface dialog, int whichButton) {
+				String contactName = nameIn.getText().toString();
+				String contactPhone = phoneIn.getText().toString();
+				// Do something with value!
+			}
 		});
 
 		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-		  public void onClick(DialogInterface dialog, int whichButton) {
-		    // Canceled.
-		  }
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// Canceled.
+			}
 		});
 
 		alert.show();
 	}
-	
+
+	private class StableArrayAdapter extends ArrayAdapter<String> {
+
+		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+
+		public StableArrayAdapter(Context context, int textViewResourceId,
+				List<String> objects) {
+			super(context, textViewResourceId, objects);
+			for (int i = 0; i < objects.size(); ++i) {
+				mIdMap.put(objects.get(i), i);
+			}
+		}
+
+		@Override
+		public long getItemId(int position) {
+			String item = getItem(position);
+			return mIdMap.get(item);
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			return true;
+		}
+
+	}
+
 	private void deleteContacts() {
-		
+
 	}
 }
