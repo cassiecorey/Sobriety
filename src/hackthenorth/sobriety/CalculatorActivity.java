@@ -1,5 +1,6 @@
 package hackthenorth.sobriety;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
@@ -22,7 +24,9 @@ public class CalculatorActivity extends Activity {
 	ViewFlipper viewFlipper;
 	private int weightLBS;
 	private int weightKgs;
-	private int count;
+	private int bCount;
+	private int wCount;
+	private int lCount;
 	private double BAC;
 	private char gender;
 	private int[] time = new int[3];
@@ -32,6 +36,7 @@ public class CalculatorActivity extends Activity {
 		setContentView(R.layout.activity_calculator);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
+		getActionBar().hide();
 
 	}
 
@@ -56,13 +61,21 @@ public class CalculatorActivity extends Activity {
 		}
 	}
 
-	public void goToWeight(View v){
-		if(((Button)v).getText().toString()=="MALE"){
-			gender = 'm';
-		}
-		else{
-			gender = 'f';
-		}
+	public void goToWeightM(View v){
+		
+		gender = 'm';
+	
+		viewFlipper.showNext();
+		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+		weightPicker.setMinValue(85);
+		weightPicker.setMaxValue(400);
+		weightPicker.setValue(150);
+		weightPicker.setWrapSelectorWheel(false);
+		weightPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+	}
+	
+	public void goToWeightF(View v){
+		gender = 'f';
 		viewFlipper.showNext();
 		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 		weightPicker.setMinValue(85);
@@ -106,17 +119,33 @@ public void LBS(View v){
 			weightLBS = weightPicker.getValue();
 		}
 		viewFlipper.showNext();
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
-		countPicker.setMinValue(0);
-		countPicker.setMaxValue(40);
-		countPicker.setValue(2);
-		countPicker.setWrapSelectorWheel(false);
-		countPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker beerPicker = (NumberPicker) findViewById(R.id.beer_picker);
+		beerPicker.setMinValue(0);
+		beerPicker.setMaxValue(40);
+		beerPicker.setValue(0);
+		beerPicker.setWrapSelectorWheel(false);
+		beerPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker winePicker = (NumberPicker) findViewById(R.id.wine_picker);
+		winePicker.setMinValue(0);
+		winePicker.setMaxValue(40);
+		winePicker.setValue(0);
+		winePicker.setWrapSelectorWheel(false);
+		winePicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker liquorPicker = (NumberPicker) findViewById(R.id.liquor_picker);
+		liquorPicker.setMinValue(0);
+		liquorPicker.setMaxValue(40);
+		liquorPicker.setValue(0);
+		liquorPicker.setWrapSelectorWheel(false);
+		liquorPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 	}
 
 	public void goToTime(View v){
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
-		count = countPicker.getValue();
+		NumberPicker winePicker = (NumberPicker) findViewById(R.id.wine_picker);
+		NumberPicker beerPicker = (NumberPicker) findViewById(R.id.beer_picker);
+		NumberPicker liquorPicker = (NumberPicker) findViewById(R.id.liquor_picker);
+		wCount = winePicker.getValue();
+		bCount = beerPicker.getValue();
+		lCount = liquorPicker.getValue();
 		viewFlipper.showNext();
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
@@ -138,35 +167,68 @@ public void LBS(View v){
 			mins[i] = String.valueOf(i);
 		}
 		minutes.setDisplayedValues(mins);
-		
-		hours.setValue(Calendar.HOUR);
-		minutes.setValue(Calendar.MINUTE);
-		ampm.setValue(Calendar.AM_PM);
+		Calendar c = Calendar.getInstance(); 
+		hours.setValue(c.get(Calendar.HOUR));
+		minutes.setValue(c.get(Calendar.HOUR));
+		ampm.setValue(c.get(Calendar.HOUR));
 		
 	}
 
 	public void calculate(View v){
+		Calendar c = Calendar.getInstance(); 
+		int currentHour = c.get(Calendar.HOUR);
+		int currentMinute = c.get(Calendar.MINUTE);
+		int currentAMPM = c.get(Calendar.AM_PM);
+		int elapsedHours;
+		
+		
+		
 		viewFlipper.showNext();
 		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
+		String[] hourString = minutes.getDisplayedValues();
 		time[0] = hours.getValue();
-		time[1] = minutes.getValue();
-		time[2] = hours.getValue();
-		int SD;
-		double MR;
-		double DP;
-			
-		if(gender == 'm'){
-			BAC = (.806*2*1.2)/(weightLBS -.58)-(.015*1);
+		time[1] = Integer.parseInt(hourString[minutes.getValue()]);
+		time[2] = ampm.getValue();
+		if(currentAMPM==time[2]){
+				elapsedHours = currentHour-time[0];
+				if(currentMinute - time[1] > 30 ){
+					elapsedHours++;
+				}
+		}
+		else{
+			elapsedHours = currentHour-time[0] + 12;
+			if(currentMinute - time[1] > 30 ){
+				elapsedHours++;
+			}
 		}
 		
-		
+		int SD = 2*bCount + 3*wCount + 1*lCount;
+		double MR;
+		double DP = elapsedHours;
+			
+		if(gender == 'm'){
+			BAC = (.806*SD*1.2)/(weightLBS *.58)-(.015*DP);
+		}
+		if(gender == 'f'){
+			BAC = (.806*SD*1.2)/(weightLBS *.49)-(.017*DP);
+		}
+		DecimalFormat twoDForm = new DecimalFormat("#.###"); 
+	    BAC = Double.valueOf(twoDForm.format(BAC));
+		TextView displayBAC = (TextView) findViewById(R.id.bac);
+		displayBAC.setText("BAC " + BAC);
 		
 	}
 	
-	public void callSomebody(View v){
+	
+	public void openContacts(View v){
 		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
+    }
+	
+	public void goHome(View v){
+		Intent intent = new Intent(this, GetHomeActivity.class);
 		startActivity(intent);
     }
 
