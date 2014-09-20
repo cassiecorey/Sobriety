@@ -128,14 +128,19 @@ public void LBS(View v){
 	}
 
 	public void calculate(View v){
+		viewFlipper.showNext();
 		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
 		time[0] = hours.getValue();
 		time[1] = minutes.getValue();
 		time[2] = hours.getValue();
+		int SD;
+		double MR;
+		double DP;
+			
 		if(gender == 'm'){
-			BAC = (.806);
+			BAC = (.806*2*1.2)/(weightLBS -.58)-(.015*1);
 		}
 		
 	}
