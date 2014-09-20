@@ -62,6 +62,7 @@
                 android:id="@+id/weight_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="LBS"
                 android:text="LBS" />
 
             <NumberPicker
@@ -114,37 +115,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="WHEN DID YOU START DRINKING?" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
-                
+                android:orientation="horizontal" >
+
                 <NumberPicker
                     android:id="@+id/hours"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   	android:text=":"/>
-                <NumberPicker 
+                    android:text=":" />
+
+                <NumberPicker
                     android:id="@+id/minutes"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <NumberPicker
                     android:id="@+id/ampm"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-            
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="calculate"
                 android:text="Calculate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOU ARE"/>
+            <TextView
+                android:id="@+id/drunklevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TIPSY"/>
+            <TextView 
+                android:id="@+id/bac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BAC 0.09"/>
+            <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CALL SOMEBODY"
+                android:onClick="openContacts"/>
+            <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO HOME"
+                android:onClick="goHome"/>
+            
         </LinearLayout>
     </ViewFlipper>
 
