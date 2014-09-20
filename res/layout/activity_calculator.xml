@@ -25,9 +25,10 @@
                 android:text="ARE YOU" />
 
             <Button
+                android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="goToWeight"
+                android:onClick="goToWeightM"
                 android:text="MALE" />
 
             <TextView
@@ -36,9 +37,10 @@
                 android:text="OR" />
 
             <Button
+                android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="goToWeight"
+                android:onClick="goToWeightF"
                 android:text="FEMALE" />
 
             <TextView

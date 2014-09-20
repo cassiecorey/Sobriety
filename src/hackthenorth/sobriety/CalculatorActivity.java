@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
@@ -61,13 +62,21 @@ public class CalculatorActivity extends Activity {
 		}
 	}
 
-	public void goToWeight(View v){
-		if(((Button)v).getText().toString()=="MALE"){
-			gender = 'm';
-		}
-		else{
-			gender = 'f';
-		}
+	public void goToWeightM(View v){
+		
+		gender = 'm';
+	
+		viewFlipper.showNext();
+		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+		weightPicker.setMinValue(85);
+		weightPicker.setMaxValue(400);
+		weightPicker.setValue(150);
+		weightPicker.setWrapSelectorWheel(false);
+		weightPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+	}
+	
+	public void goToWeightF(View v){
+		gender = 'f';
 		viewFlipper.showNext();
 		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 		weightPicker.setMinValue(85);
@@ -143,32 +152,59 @@ public void LBS(View v){
 			mins[i] = String.valueOf(i);
 		}
 		minutes.setDisplayedValues(mins);
-		
-		hours.setValue(Calendar.HOUR);
-		minutes.setValue(Calendar.MINUTE);
-		ampm.setValue(Calendar.AM_PM);
+		Calendar c = Calendar.getInstance(); 
+		hours.setValue(c.get(Calendar.HOUR));
+		minutes.setValue(c.get(Calendar.HOUR));
+		ampm.setValue(c.get(Calendar.HOUR));
 		
 	}
 
 	public void calculate(View v){
+		Calendar c = Calendar.getInstance(); 
+		int currentHour = c.get(Calendar.HOUR);
+		int currentMinute = c.get(Calendar.MINUTE);
+		int currentAMPM = c.get(Calendar.AM_PM);
+		int elapsedHours;
+		
+		
+		
 		viewFlipper.showNext();
 		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
+		String[] hourString = minutes.getDisplayedValues();
 		time[0] = hours.getValue();
-		time[1] = minutes.getValue();
-		time[2] = hours.getValue();
-		int SD;
-		double MR;
-		double DP;
-			
-		if(gender == 'm'){
-			BAC = (.806*2*1.2)/(weightLBS -.58)-(.015*1);
+		time[1] = Integer.parseInt(hourString[minutes.getValue()]);
+		time[2] = ampm.getValue();
+		if(currentAMPM==time[2]){
+				elapsedHours = currentHour-time[0];
+				if(currentMinute - time[1] > 30 ){
+					elapsedHours++;
+				}
+		}
+		else{
+			elapsedHours = currentHour-time[0] + 12;
+			if(currentMinute - time[1] > 30 ){
+				elapsedHours++;
+			}
 		}
 		
+		int SD = 2*count;
+		double MR;
+		double DP = elapsedHours;
+			
+		if(gender == 'm'){
+			BAC = (.806*SD*1.2)/(weightLBS *.58)-(.015*DP);
+		}
+		if(gender == 'f'){
+			BAC = (.806*SD*1.2)/(weightLBS *.49)-(.017*DP);
+		}
 		
+		TextView displayBAC = (TextView) findViewById(R.id.bac);
+		displayBAC.setText("BAC " + BAC);
 		
 	}
+	
 	
 	public void callSomebody(View v){
 		Intent intent = new Intent(this, ContactsActivity.class);
