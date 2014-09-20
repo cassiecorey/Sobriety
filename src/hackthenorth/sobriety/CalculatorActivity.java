@@ -1,5 +1,6 @@
 package hackthenorth.sobriety;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -212,15 +213,21 @@ public void LBS(View v){
 		if(gender == 'f'){
 			BAC = (.806*SD*1.2)/(weightLBS *.49)-(.017*DP);
 		}
-		
+		DecimalFormat twoDForm = new DecimalFormat("#.###"); 
+	    BAC = Double.valueOf(twoDForm.format(BAC));
 		TextView displayBAC = (TextView) findViewById(R.id.bac);
 		displayBAC.setText("BAC " + BAC);
 		
 	}
 	
 	
-	public void callSomebody(View v){
+	public void openContacts(View v){
 		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
+    }
+	
+	public void goHome(View v){
+		Intent intent = new Intent(this, GetHomeActivity.class);
 		startActivity(intent);
     }
 
