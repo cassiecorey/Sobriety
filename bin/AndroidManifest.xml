@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="L"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
 
     <application
         android:allowBackup="true"
@@ -24,15 +24,18 @@
         </activity>
         <activity
             android:name=".CalculatorActivity"
-            android:label="@string/title_activity_calculator" >
+            android:label="@string/title_activity_calculator"
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
         <activity
             android:name=".ContactsActivity"
-            android:label="@string/title_activity_contacts" >
+            android:label="@string/title_activity_contacts"
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
         <activity
             android:name=".GetHomeActivity"
-            android:label="@string/title_activity_get_home" >
+            android:label="@string/title_activity_get_home"
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
     </application>
 
