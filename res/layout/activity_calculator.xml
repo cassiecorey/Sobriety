@@ -28,7 +28,7 @@
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:background="#FF0099"
-                android:onClick="goToWeight"
+                android:onClick="goToWeightM"
                 android:text="MALE"
                 android:textColor="#66FF00"
                 android:textSize="50sp"
@@ -38,7 +38,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OR"
-                android:weight="1"
                 android:textColor="#FFFFFF"
                 android:textSize="50sp"
                 android:textStyle="bold" />
@@ -50,7 +49,7 @@
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:background="#FF0099"
-                android:onClick="goToWeight"
+                android:onClick="goToWeightF"
                 android:text="FEMALE"
                 android:textColor="#66FF00"
                 android:textSize="50sp"
@@ -59,8 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="?"
-                android:weight="1"
+                android:text=" ? "
                 android:textColor="#FFFFFF"
                 android:textSize="50sp"
                 android:textStyle="bold" />
@@ -75,7 +73,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOW MUCH DO YOU WEIGH?" />
+                android:text="HOW MUCH DO YOU WEIGH?"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/weight_type"

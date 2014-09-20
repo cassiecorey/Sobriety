@@ -35,6 +35,7 @@ public class CalculatorActivity extends Activity {
 		setContentView(R.layout.activity_calculator);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
+		getActionBar().hide();
 
 	}
 
