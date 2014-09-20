@@ -19,7 +19,7 @@
         android:text="SOBER PEOPLE"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="#FF9100"
+        android:textColor="#FFC300"
         android:background="#00FFDD"
         android:onClick="callSomebody"/>
     
@@ -33,7 +33,7 @@
         android:textColor="#00FFDD"
         android:layout_weight="1"
         android:text="HOW DRUNK AM I?"
-        android:background="#FF9100"
+        android:background="#FFC300"
         android:onClick="openCalculator"/>
     
     <Button
@@ -43,7 +43,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_margin="20dp"
-        android:textColor="#FF9100"
+        android:textColor="#FFC300"
         android:layout_weight="1"
         android:text="GET HOME"
         android:background="#00FFDD"
