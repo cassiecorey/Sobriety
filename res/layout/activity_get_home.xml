@@ -10,22 +10,41 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hackthenorth.sobriety.GetHomeActivity" >
 
-        
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:background="#FF0099"
+        android:onClick="walk"
         android:text="WALK"
-        android:onClick="walk"/>
+        android:textColor="#66FF00"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:background="#66FF00"
+        android:onClick="callACab"
         android:text="CAB"
-        android:onClick="callACab" />
-    
-    <Button 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textColor="#FF0099"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/sober_drivers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:background="#FF0099"
+        android:onClick="catchABus"
         android:text="BUS"
-        android:onClick="catchABus"/>
+        android:textColor="#66FF00"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
