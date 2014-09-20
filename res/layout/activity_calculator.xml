@@ -95,10 +95,27 @@
                 android:layout_height="wrap_content"
                 android:text="HAVE YOU HAD?" />
 
-            <NumberPicker
-                android:id="@+id/count_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <NumberPicker
+                    android:id="@+id/beer_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <NumberPicker
+                    android:id="@+id/wine_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <NumberPicker
+                    android:id="@+id/liquor_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
@@ -156,32 +173,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-            
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="YOU ARE"/>
+                android:text="YOU ARE" />
+
             <TextView
                 android:id="@+id/drunklevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TIPSY"/>
-            <TextView 
+                android:text="TIPSY" />
+
+            <TextView
                 android:id="@+id/bac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BAC 0.09"/>
-            <Button 
+                android:text="BAC 0.09" />
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CALL SOMEBODY"
-                android:onClick="openContacts"/>
-            <Button 
+                android:onClick="openContacts"
+                android:text="CALL SOMEBODY" />
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GO HOME"
-                android:onClick="goHome"/>
-            
+                android:onClick="goHome"
+                android:text="GO HOME" />
         </LinearLayout>
     </ViewFlipper>
 

@@ -1100,6 +1100,7 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int ampm=0x7f050045;
         public static final int bac=0x7f050047;
+<<<<<<< HEAD
         public static final int beginning=0x7f050011;
         public static final int calculator=0x7f050049;
         public static final int calculator_time=0x7f050042;
@@ -1109,6 +1110,17 @@ containing a value of this type.
         public static final int contact_phone=0x7f05004d;
         public static final int contact_popup=0x7f05004b;
         public static final int count_picker=0x7f050041;
+=======
+        public static final int beer_picker=0x7f05003f;
+        public static final int beginning=0x7f050011;
+        public static final int calculator=0x7f05004a;
+        public static final int calculator_time=0x7f050042;
+        public static final int checkbox=0x7f05002d;
+        public static final int collapseActionView=0x7f05000d;
+        public static final int contact_name=0x7f05004d;
+        public static final int contact_phone=0x7f05004e;
+        public static final int contact_popup=0x7f05004c;
+>>>>>>> 3089b62819a7e5e057496964058b1ee297995dcc
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1118,16 +1130,23 @@ containing a value of this type.
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
+<<<<<<< HEAD
         public static final int female=0x7f05003e;
         public static final int get_home=0x7f05004a;
+=======
+        public static final int get_home=0x7f05004b;
+>>>>>>> 3089b62819a7e5e057496964058b1ee297995dcc
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int hours=0x7f050043;
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
+        public static final int liquor_picker=0x7f050041;
+        public static final int list=0x7f050048;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
+<<<<<<< HEAD
         public static final int male=0x7f05003d;
         public static final int middle=0x7f050012;
         public static final int minutes=0x7f050044;
@@ -1136,6 +1155,14 @@ containing a value of this type.
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int number=0x7f05004f;
+=======
+        public static final int map=0x7f05004f;
+        public static final int middle=0x7f050012;
+        public static final int minutes=0x7f050044;
+        public static final int never=0x7f050009;
+        public static final int none=0x7f050010;
+        public static final int normal=0x7f050000;
+>>>>>>> 3089b62819a7e5e057496964058b1ee297995dcc
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
@@ -1153,7 +1180,11 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
+<<<<<<< HEAD
         public static final int sober_drivers=0x7f050048;
+=======
+        public static final int sober_drivers=0x7f050049;
+>>>>>>> 3089b62819a7e5e057496964058b1ee297995dcc
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
@@ -1162,8 +1193,14 @@ containing a value of this type.
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int viewflipper=0x7f05003c;
+<<<<<<< HEAD
         public static final int weight_picker=0x7f050040;
         public static final int weight_type=0x7f05003f;
+=======
+        public static final int weight_picker=0x7f05003e;
+        public static final int weight_type=0x7f05003d;
+        public static final int wine_picker=0x7f050040;
+>>>>>>> 3089b62819a7e5e057496964058b1ee297995dcc
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1222,7 +1259,8 @@ containing a value of this type.
         public static final int activity_launch=0x7f03001b;
         public static final int contact_popup=0x7f03001c;
         public static final int list_item=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int map_activity=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int calculator=0x7f0c0000;
