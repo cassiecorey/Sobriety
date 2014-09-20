@@ -17,8 +17,19 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
+
+
+
+
+
 public class CalculatorActivity extends Activity {
 	ViewFlipper viewFlipper;
+	private int weightLBS;
+	private int weightKgs;
+	private int count;
+	private double BAC;
+	private char gender;
+	private int[] time = new int[3];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +61,12 @@ public class CalculatorActivity extends Activity {
 	}
 
 	public void goToWeight(View v){
+		if(((Button)v).getText().toString()=="MALE"){
+			gender = 'm';
+		}
+		else{
+			gender = 'f';
+		}
 		viewFlipper.showNext();
 		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 		weightPicker.setMinValue(85);
@@ -58,9 +75,27 @@ public class CalculatorActivity extends Activity {
 		weightPicker.setWrapSelectorWheel(false);
 		weightPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 	}
+	
+public void LBS(View v){
+		
+		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+		weightPicker.setMinValue(40);
+		weightPicker.setMaxValue(185);
+		weightPicker.setValue(70);
+		weightPicker.setWrapSelectorWheel(false);
+		
+		
+	}
+
 	public void goToCount(View v){
 		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
-		int weight = weightPicker.getValue();
+		Button button = (Button) findViewById(R.id.weight_type);
+		if(button.getText().toString()=="Kgs"){
+			weightKgs = weightPicker.getValue();
+		}
+		else{
+			weightLBS = weightPicker.getValue();
+		}
 		viewFlipper.showNext();
 		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
 		countPicker.setMinValue(0);
@@ -72,7 +107,7 @@ public class CalculatorActivity extends Activity {
 
 	public void goToTime(View v){
 		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
-		int count = countPicker.getValue();
+		count = countPicker.getValue();
 		viewFlipper.showNext();
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
@@ -93,6 +128,16 @@ public class CalculatorActivity extends Activity {
 	}
 
 	public void calculate(View v){
-		viewFlipper.showNext();
+		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
+		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
+		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
+		time[0] = hours.getValue();
+		time[1] = minutes.getValue();
+		time[2] = hours.getValue();
+		if(gender == 'm'){
+			BAC = (.806);
+		}
+		
 	}
+	
 }
