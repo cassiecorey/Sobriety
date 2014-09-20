@@ -106,7 +106,7 @@ public void LBS(View v){
 			weightLBS = weightPicker.getValue();
 		}
 		viewFlipper.showNext();
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
+		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
 		countPicker.setMinValue(0);
 		countPicker.setMaxValue(40);
 		countPicker.setValue(2);
@@ -115,7 +115,7 @@ public void LBS(View v){
 	}
 
 	public void goToTime(View v){
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
+		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
 		count = countPicker.getValue();
 		viewFlipper.showNext();
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
