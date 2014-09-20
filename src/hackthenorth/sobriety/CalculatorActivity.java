@@ -121,6 +121,15 @@ public void LBS(View v){
 		ampm.setMaxValue(1);
 		ampm.setDisplayedValues(new String[] { "AM", "PM"});
 		
+		String[] mins = new String[60];
+		for(int i=0; i<10; i++) {
+			mins[i] = "0" + i;
+		}
+		for(int i=10; i<60; i++) {
+			mins[i] = String.valueOf(i);
+		}
+		minutes.setDisplayedValues(mins);
+		
 		hours.setValue(Calendar.HOUR);
 		minutes.setValue(Calendar.MINUTE);
 		ampm.setValue(Calendar.AM_PM);
