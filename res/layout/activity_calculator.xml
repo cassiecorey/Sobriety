@@ -27,7 +27,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="nextQuestion"
+                android:onClick="goToWeight"
                 android:text="MALE" />
 
             <TextView
@@ -38,7 +38,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="nextQuestion"
+                android:onClick="goToWeight"
                 android:text="FEMALE" />
 
             <TextView
@@ -68,6 +68,12 @@
                 android:id="@+id/weight_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToCount"
+                android:text="NEXT" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,6 +96,12 @@
                 android:id="@+id/drink_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goToTime"
+                android:text="NEXT" />
         </LinearLayout>
 
         <LinearLayout
@@ -97,12 +109,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-            
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WHEN DID YOU START DRINKING?"/>
+                android:text="WHEN DID YOU START DRINKING?" />
             
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="calculate"
+                android:text="Calculate" />
         </LinearLayout>
     </ViewFlipper>
 

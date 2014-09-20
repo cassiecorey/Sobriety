@@ -5,14 +5,19 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ViewFlipper;
 
 public class CalculatorActivity extends Activity {
-
+	ViewFlipper viewFlipper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
+
 	}
 
 	@Override
@@ -34,5 +39,22 @@ public class CalculatorActivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	public void goToWeight(View v){
+		
+		viewFlipper.showNext();	
+	}
+	public void goToCount(View v){
+		viewFlipper.showNext();
+	}
+	
+	public void goToTime(View v){
+		
+		viewFlipper.showNext();
+	}
+	
+	public void calculate(View v){
+		viewFlipper.showNext();
 	}
 }
