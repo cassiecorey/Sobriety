@@ -11,11 +11,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Sobriety"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LaunchActivity"
-            android:label="@string/app_name" >
+            android:label="Be safe. Don't drink \u0026 drive."
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,17 +25,20 @@
         </activity>
         <activity
             android:name=".CalculatorActivity"
-            android:label="@string/title_activity_calculator"
+            android:label="Stick with a buddy."
+            android:screenOrientation="portrait"
             android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
         <activity
             android:name=".ContactsActivity"
-            android:label="@string/title_activity_contacts"
+            android:label="When in doubt, phone a friend."
+            android:screenOrientation="portrait"
             android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
         <activity
             android:name=".GetHomeActivity"
-            android:label="@string/title_activity_get_home"
+            android:label="Speak up. Say NO."
+            android:screenOrientation="portrait"
             android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
         </activity>
     </application>

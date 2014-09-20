@@ -1102,7 +1102,7 @@ containing a value of this type.
         public static final int bac=0x7f050049;
         public static final int beer_picker=0x7f050041;
         public static final int beginning=0x7f050011;
-        public static final int calculator=0x7f05004c;
+        public static final int calculator=0x7f05004d;
         public static final int calculator_time=0x7f050044;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
@@ -1119,7 +1119,7 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int female=0x7f05003e;
-        public static final int get_home=0x7f05004d;
+        public static final int get_home=0x7f05004b;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int hours=0x7f050045;
@@ -1127,7 +1127,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
         public static final int liquor_picker=0x7f050043;
-        public static final int list=0x7f05004a;
+        public static final int list=0x7f05004c;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int male=0x7f05003d;
@@ -1154,7 +1154,7 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int sober_drivers=0x7f05004b;
+        public static final int sober_drivers=0x7f05004a;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
@@ -1163,8 +1163,8 @@ containing a value of this type.
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int viewflipper=0x7f05003c;
-        public static final int weight_picker=0x7f050040;
-        public static final int weight_type=0x7f05003f;
+        public static final int weight_picker=0x7f05003f;
+        public static final int weight_type=0x7f050040;
         public static final int wine_picker=0x7f050042;
         public static final int withText=0x7f05000c;
     }

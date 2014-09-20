@@ -27,10 +27,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:background="#FF0099"
+                android:background="#00FFDD"
                 android:onClick="goToWeightM"
                 android:text="MALE"
-                android:textColor="#66FF00"
+                android:textColor="#0000FF"
                 android:textSize="50sp"
                 android:textStyle="bold" />
 
@@ -73,28 +73,47 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="20dp"
                 android:text="HOW MUCH DO YOU WEIGH?"
                 android:textColor="#FFFFFF"
                 android:textSize="50sp"
                 android:textStyle="bold" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <NumberPicker
+                    android:id="@+id/weight_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp" />
+
+                <Button
+                    android:id="@+id/weight_type"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="LBS"
+                    android:paddingBottom="10dp"
+                    android:text="lbs"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
             <Button
-                android:id="@+id/weight_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="LBS"
-                android:text="LBS" />
-
-            <NumberPicker
-                android:id="@+id/weight_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="#985CFF"
                 android:onClick="goToCount"
-                android:text="NEXT" />
+                android:paddingBottom="20dp"
+                android:text="NEXT"
+                android:textColor="#17FF1F"
+                android:textSize="50sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,16 +125,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOW MANY DRINKS" />
+                android:text="HOW MANY"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HAVE YOU HAD?" />
+                android:text="HAVE YOU HAD?"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -123,63 +149,92 @@
                     android:id="@+id/beer_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
 
                 <NumberPicker
                     android:id="@+id/wine_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
 
                 <NumberPicker
                     android:id="@+id/liquor_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:paddingTop="10dp" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_weight="1"
-                    android:text="BEER" />
+                    android:text="BEER"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_weight="1"
-                    android:text="WINE" />
+                    android:text="WINE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_weight="1"
-                    android:text="LIQOUR" />
+                    android:text="LIQUOR"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#985CFF"
                 android:onClick="goToTime"
-                android:text="NEXT" />
+                android:text="NEXT"
+                android:textColor="#17FF1F"
+                android:textSize="50sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/calculator_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WHEN DID YOU START DRINKING?" />
+                android:gravity="center"
+                android:text="WHEN DID YOU START DRINKING?"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -195,7 +250,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=":" />
+                    android:text=":"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
 
                 <NumberPicker
                     android:id="@+id/minutes"
@@ -211,43 +268,72 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:onClick="calculate"
-                android:text="Calculate" />
+                android:text="Calculate"
+                android:textColor="#17FF1F"
+                android:background="#985CFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="YOU ARE" />
+                android:text="YOU ARE"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/drunklevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TIPSY" />
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="TIPSY"
+                android:textColor="#0033FF"
+                android:textSize="75sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/bac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BAC 0.09" />
+                android:text="Blood alcohol level: 0.09"
+                android:textColor="#FFFFFF"
+                android:textSize="35sp"
+                android:textStyle="bold" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/sober_drivers"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="#00FFDD"
                 android:onClick="openContacts"
-                android:text="CALL SOMEBODY" />
+                android:text="CALL SOMEBODY"
+                android:textColor="#FFC300"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/get_home"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="#00FFDD"
                 android:onClick="goHome"
-                android:text="GO HOME" />
+                android:text="GO HOME"
+                android:textColor="#FFC300"
+                android:textSize="40sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ViewFlipper>
 

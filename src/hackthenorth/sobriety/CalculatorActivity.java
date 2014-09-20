@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.format.DateFormat;
@@ -29,6 +30,9 @@ public class CalculatorActivity extends Activity {
 	private int lCount;
 	private double BAC;
 	private char gender;
+	private String[] levels = {"Feelin' it", "Buzzed", "Tipsy", "Sloppy",
+			"Horny", "Reckless", "Hammered", "Blackout", 
+			"Definitely dead and somebody stole your phone."};
 	private int[] time = new int[3];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +40,6 @@ public class CalculatorActivity extends Activity {
 		setContentView(R.layout.activity_calculator);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
-		getActionBar().hide();
-
 	}
 
 	@Override
@@ -88,8 +90,8 @@ public class CalculatorActivity extends Activity {
 public void LBS(View v){
 	
 		Button button = (Button) findViewById(R.id.weight_type);
-		if(button.getText().toString() == "LBS"){
-			button.setText("Kgs");
+		if(button.getText().toString() == "lbs"){
+			button.setText("kgs");
 			NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 			weightPicker.setMinValue(40);
 			weightPicker.setMaxValue(185);
@@ -97,7 +99,7 @@ public void LBS(View v){
 			weightPicker.setWrapSelectorWheel(false);
 		}
 		else{
-			button.setText("LBS");
+			button.setText("lbs");
 			NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 			weightPicker.setMinValue(85);
 			weightPicker.setMaxValue(400);
@@ -112,7 +114,7 @@ public void LBS(View v){
 	public void goToCount(View v){
 		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 		Button button = (Button) findViewById(R.id.weight_type);
-		if(button.getText().toString()=="Kgs"){
+		if(button.getText().toString()=="kgs"){
 			weightKgs = weightPicker.getValue();
 		}
 		else{
@@ -214,10 +216,30 @@ public void LBS(View v){
 		if(gender == 'f'){
 			BAC = (.806*SD*1.2)/(weightLBS *.49)-(.017*DP);
 		}
+		TextView drunkLevel = (TextView) findViewById(R.id.drunklevel);
+		String level = "sober.";
+		int color = Color.rgb(63, 255, 0);
+		for(int i=0; i<9; i++) {
+			if((BAC > i*0.0422) && (BAC < ((i+1)*0.0422))) {
+				level = levels[i];
+				if(i>3) {
+					color = Color.rgb(248, 0, 0);
+				}
+			}
+		}
+		if(BAC > 1){
+			level = "not as funny as you think you are.";
+		}
+		drunkLevel.setText(level);
+		if(level.length()>7) {
+			drunkLevel.setTextSize(30);
+		}
+		
 		DecimalFormat twoDForm = new DecimalFormat("#.###"); 
 	    BAC = Double.valueOf(twoDForm.format(BAC));
 		TextView displayBAC = (TextView) findViewById(R.id.bac);
-		displayBAC.setText("BAC " + BAC);
+		displayBAC.setText("Blood alcohol level: " + BAC);
+		displayBAC.setTextColor(color);
 		
 	}
 	
