@@ -1,12 +1,20 @@
 package hackthenorth.sobriety;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
 public class CalculatorActivity extends Activity {
@@ -40,20 +48,50 @@ public class CalculatorActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	public void goToWeight(View v){
-		
-		viewFlipper.showNext();	
+		viewFlipper.showNext();
+		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+		weightPicker.setMinValue(85);
+		weightPicker.setMaxValue(400);
+		weightPicker.setValue(150);
+		weightPicker.setWrapSelectorWheel(false);
+		weightPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 	}
 	public void goToCount(View v){
+		NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
+		int weight = weightPicker.getValue();
 		viewFlipper.showNext();
+		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
+		countPicker.setMinValue(0);
+		countPicker.setMaxValue(40);
+		countPicker.setValue(2);
+		countPicker.setWrapSelectorWheel(false);
+		countPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 	}
-	
+
 	public void goToTime(View v){
-		
+		NumberPicker countPicker = (NumberPicker) findViewById(R.id.count_picker);
+		int count = countPicker.getValue();
 		viewFlipper.showNext();
+		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
+		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
+		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
+		
+		hours.setMinValue(0);
+		hours.setMaxValue(12);
+		minutes.setMinValue(0);
+		minutes.setMaxValue(59);
+		ampm.setMinValue(0);
+		ampm.setMaxValue(1);
+		ampm.setDisplayedValues(new String[] { "AM", "PM"});
+		
+		hours.setValue(Calendar.HOUR);
+		minutes.setValue(Calendar.MINUTE);
+		ampm.setValue(Calendar.AM_PM);
+		
 	}
-	
+
 	public void calculate(View v){
 		viewFlipper.showNext();
 	}

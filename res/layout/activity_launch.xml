@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SOBER PEOPLE"
+        android:background="#f96f00"
         android:onClick="callSomebody"/>
     
     <Button 
@@ -22,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HOW DRUNK AM I?"
+        android:background="#00ff00"
         android:onClick="openCalculator"/>
     
     <Button
@@ -29,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GET HOME"
+        android:background="#ffff00"
         android:onClick="getHome" />
 
 </LinearLayout>
