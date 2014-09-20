@@ -23,7 +23,9 @@ public class CalculatorActivity extends Activity {
 	ViewFlipper viewFlipper;
 	private int weightLBS;
 	private int weightKgs;
-	private int count;
+	private int bCount;
+	private int wCount;
+	private int lCount;
 	private double BAC;
 	private char gender;
 	private int[] time = new int[3];
@@ -115,17 +117,33 @@ public void LBS(View v){
 			weightLBS = weightPicker.getValue();
 		}
 		viewFlipper.showNext();
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
-		countPicker.setMinValue(0);
-		countPicker.setMaxValue(40);
-		countPicker.setValue(2);
-		countPicker.setWrapSelectorWheel(false);
-		countPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker beerPicker = (NumberPicker) findViewById(R.id.beer_picker);
+		beerPicker.setMinValue(0);
+		beerPicker.setMaxValue(40);
+		beerPicker.setValue(0);
+		beerPicker.setWrapSelectorWheel(false);
+		beerPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker winePicker = (NumberPicker) findViewById(R.id.wine_picker);
+		winePicker.setMinValue(0);
+		winePicker.setMaxValue(40);
+		winePicker.setValue(0);
+		winePicker.setWrapSelectorWheel(false);
+		winePicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		NumberPicker liquorPicker = (NumberPicker) findViewById(R.id.liquor_picker);
+		liquorPicker.setMinValue(0);
+		liquorPicker.setMaxValue(40);
+		liquorPicker.setValue(0);
+		liquorPicker.setWrapSelectorWheel(false);
+		liquorPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 	}
 
 	public void goToTime(View v){
-		NumberPicker countPicker = (NumberPicker) findViewById(R.id.wine_picker);
-		count = countPicker.getValue();
+		NumberPicker winePicker = (NumberPicker) findViewById(R.id.wine_picker);
+		NumberPicker beerPicker = (NumberPicker) findViewById(R.id.beer_picker);
+		NumberPicker liquorPicker = (NumberPicker) findViewById(R.id.liquor_picker);
+		wCount = winePicker.getValue();
+		bCount = beerPicker.getValue();
+		lCount = liquorPicker.getValue();
 		viewFlipper.showNext();
 		NumberPicker hours = (NumberPicker) findViewById(R.id.hours);
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
@@ -184,7 +202,7 @@ public void LBS(View v){
 			}
 		}
 		
-		int SD = 2*count;
+		int SD = 2*bCount + 3*wCount + 1*lCount;
 		double MR;
 		double DP = elapsedHours;
 			
