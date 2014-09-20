@@ -110,16 +110,16 @@ public class ContactsActivity extends ActionBarActivity {
 
 		alert.show();*/
 		
-		final EditText input = new EditText(this);
-		input.setHint("Your name");
-		input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+		final View view = findViewById(R.id.contact_popup);
+		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
+		final EditText phoneIn = (EditText) findViewById(R.id.contact_phone);
 
 		new AlertDialog.Builder(this)
 		.setTitle("You got a new highscore!")
-		.setView(input)
+		.setView(view)
 		.setPositiveButton("Save", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				saveScore(input.getText().toString(), score);
+				saveContact(nameIn.getText().toString(), phoneIn.getText().toString());
 			}
 		}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -155,5 +155,9 @@ public class ContactsActivity extends ActionBarActivity {
 
 	private void deleteContacts() {
 
+	}
+	
+	private void saveContact(String name, String phone) {
+		
 	}
 }
