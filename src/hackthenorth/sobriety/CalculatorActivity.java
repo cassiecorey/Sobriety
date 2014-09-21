@@ -233,7 +233,7 @@ public void LBS(View v){
 				}
 			}
 		}
-		if(BAC > 1){
+		if(BAC > 0.375){
 			level = "not as funny as you think you are.";
 		}
 		drunkLevel.setText(level);
