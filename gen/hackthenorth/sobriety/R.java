@@ -1091,12 +1091,12 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f050023;
         public static final int action_bar_title=0x7f050022;
         public static final int action_context_bar=0x7f05001d;
-        public static final int action_delete=0x7f050056;
+        public static final int action_delete=0x7f050057;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_new=0x7f050055;
-        public static final int action_settings=0x7f050054;
+        public static final int action_new=0x7f050056;
+        public static final int action_settings=0x7f050055;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int ampm=0x7f050047;
@@ -1107,8 +1107,8 @@ containing a value of this type.
         public static final int calculator_time=0x7f050044;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
-        public static final int contact_name=0x7f05004f;
-        public static final int contact_phone=0x7f050050;
+        public static final int contact_name=0x7f050050;
+        public static final int contact_phone=0x7f050051;
         public static final int contact_popup=0x7f05004e;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
@@ -1127,13 +1127,13 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int img=0x7f050052;
+        public static final int img=0x7f050053;
         public static final int liquor_picker=0x7f050043;
         public static final int list=0x7f05004c;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int male=0x7f05003d;
-        public static final int map=0x7f050053;
+        public static final int map=0x7f050054;
         public static final int middle=0x7f050012;
         public static final int minutes=0x7f050046;
         public static final int never=0x7f050009;
@@ -1160,7 +1160,8 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int text1=0x7f050051;
+        public static final int text1=0x7f050052;
+        public static final int textA=0x7f05004f;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
@@ -1225,10 +1226,11 @@ containing a value of this type.
         public static final int activity_contacts=0x7f030019;
         public static final int activity_get_home=0x7f03001a;
         public static final int activity_launch=0x7f03001b;
-        public static final int contact_popup=0x7f03001c;
-        public static final int list_item=0x7f03001d;
-        public static final int map_activity=0x7f03001e;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int address_popup=0x7f03001c;
+        public static final int contact_popup=0x7f03001d;
+        public static final int list_item=0x7f03001e;
+        public static final int map_activity=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int calculator=0x7f0c0000;

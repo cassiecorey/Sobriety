@@ -1,18 +1,24 @@
 package hackthenorth.sobriety;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class GetHomeActivity extends Activity {
 
+	String address = "100 University Ave W, Waterloo, ON";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +39,7 @@ public class GetHomeActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		if(item.getItemId()==R.id.action_settings) {
+			editAddress();
 			return true;
 		} else if(item.getItemId()==R.id.home) {
 			NavUtils.navigateUpFromSameTask(this);
@@ -54,8 +61,36 @@ public class GetHomeActivity extends Activity {
 		
 	}
 	
+	public void editAddress() {
+		LayoutInflater factory = LayoutInflater.from(this);
+
+		//text_entry is an Layout XML file containing two text field to display in alert dialog
+		final View textEntryView = factory.inflate(R.layout.address_popup, null);
+
+		final EditText input1 = (EditText) textEntryView.findViewById(R.id.textA);
+		input1.setText(address);
+
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		alert.setIcon(R.drawable.ic_launcher).setTitle("Edit home address:").setView(textEntryView).setPositiveButton("Save",
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,
+					int whichButton) {
+				address = input1.getText().toString();
+			}
+		}).setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,
+					int whichButton) {
+				/*
+				 * User clicked cancel so don't do anything
+				 */
+			}
+		});
+		alert.show();
+	}
+	
 	public void showMap() {
-		String uri = "http://maps.google.com/";
+		String uri = "google.navigation:q="+address;
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
         intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
         startActivity(intent);
