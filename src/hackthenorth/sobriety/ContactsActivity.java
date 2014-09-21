@@ -1,58 +1,83 @@
 package hackthenorth.sobriety;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
-import android.text.InputType;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ContactsActivity extends ActionBarActivity {
+
+	private DbHelper dbHelper = new DbHelper(this);
+	private ArrayList<Contacts> contacts = new ArrayList<Contacts>();
+	private ArrayList<String> names = new ArrayList<String>();
+	private ListView list;
+	CustomList adapter;
+	String[] namesA;
+	Bundle savedInstanceState;
+
+	public class CustomList extends ArrayAdapter<String>{
+		private final Activity context;
+		private final String[] web;
+		private final int imageId;
+		public CustomList(Activity context, String[] web, int imageId) {
+			super(context, R.layout.list_item, web);
+			this.context = context;
+			this.web = web;
+			this.imageId = imageId;
+		}
+
+		@Override
+		public View getView(int position, View view, ViewGroup parent) {
+			LayoutInflater inflater = context.getLayoutInflater();
+			View rowView = inflater.inflate(R.layout.list_item, null, true);
+			TextView txtTitle = (TextView) rowView.findViewById(R.id.text1);
+			ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
+			imageView.setImageResource(R.drawable.ic_launcher);
+			imageView.setVisibility(View.INVISIBLE);
+			imageView.setId(0);
+			txtTitle.setText(web[position]);
+			return rowView;
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.savedInstanceState = savedInstanceState;
 		setContentView(R.layout.activity_contacts);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		ListView listview = (ListView) findViewById(R.id.list);
 
-		//Creating a fake list of stuff
-		String[] values = new String[] { "Cassie", "Brian", "Greg",
-				"Becca", "Sarah", "Emily", "Ryan", "Meghan",
-				"Laura", "Tim", "Kevin", "Mark"};
-		final ArrayList<String> list = new ArrayList<String>();
-		for (int i = 0; i < values.length; ++i) {
-			list.add(values[i]);
+		List<Contacts> tempLst = dbHelper.getAllContacts();
+		for(Contacts c : tempLst) {
+			contacts.add(c);
+			names.add(c.getName());
+		}
+		namesA = new String[names.size()];
+		for(int i=0; i<names.size(); i++){
+			namesA[i] = names.get(i);
 		}
 
-		final StableArrayAdapter adapter = new StableArrayAdapter(this,
-				android.R.layout.simple_list_item_1, list);
-		listview.setAdapter(adapter);
+		adapter = new CustomList(this, namesA, R.drawable.ic_launcher);
+		list = (ListView)findViewById(R.id.list);
+		list.setAdapter(adapter);
 
-		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				//Here is where you open the phone app and call someone
-			}
-
-		});
 	}
 
 	@Override
@@ -85,79 +110,69 @@ public class ContactsActivity extends ActionBarActivity {
 	}
 
 	private void addContact() {
-		/*AlertDialog.Builder alert = new AlertDialog.Builder(this);
-		LayoutInflater inflater = getLayoutInflater();
+		LayoutInflater factory = LayoutInflater.from(this);
 
-		alert.setTitle("New sober person");
+		//text_entry is an Layout XML file containing two text field to display in alert dialog
+		final View textEntryView = factory.inflate(R.layout.contact_popup, null);
 
-		alert.setView(inflater.inflate(R.layout.contact_popup, null));
-		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
-		final EditText phoneIn = (EditText) findViewById(R.id.contact_phone);
+		final EditText input1 = (EditText) textEntryView.findViewById(R.id.contact_name);
+		final EditText input2 = (EditText) textEntryView.findViewById(R.id.contact_phone);
 
-		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				String contactName = nameIn.getText().toString();
-				String contactPhone = phoneIn.getText().toString();
-				// Do something with value!
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		alert.setIcon(R.drawable.ic_launcher).setTitle("Sober person:").setView(textEntryView).setPositiveButton("Save",
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,
+					int whichButton) {
+				saveContact(input1.getText().toString(), input2.getText().toString());
+			}
+		}).setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,
+					int whichButton) {
+				/*
+				 * User clicked cancel so don't do anything
+				 */
 			}
 		});
-
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				// Canceled.
-			}
-		});
-
-		alert.show();*/
-		
-		final View view = findViewById(R.id.contact_popup);
-		final EditText nameIn = (EditText) findViewById(R.id.contact_name);
-		final EditText phoneIn = (EditText) findViewById(R.id.contact_phone);
-
-		new AlertDialog.Builder(this)
-		.setTitle("You got a new highscore!")
-		.setView(view)
-		.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				saveContact(nameIn.getText().toString(), phoneIn.getText().toString());
-			}
-		}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-				// Do nothing.
-			}
-		}).show();
+		alert.show();
 	}
 
-	private class StableArrayAdapter extends ArrayAdapter<String> {
-
-		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-		public StableArrayAdapter(Context context, int textViewResourceId,
-				List<String> objects) {
-			super(context, textViewResourceId, objects);
-			for (int i = 0; i < objects.size(); ++i) {
-				mIdMap.put(objects.get(i), i);
-			}
-		}
-
-		@Override
-		public long getItemId(int position) {
-			String item = getItem(position);
-			return mIdMap.get(item);
-		}
-
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
-	}
 
 	private void deleteContacts() {
+		for(int i=0; i<list.getCount(); i++) {
+			View v = list.getChildAt(i);
+			if(v.getId()==1) {
+				String name = ((TextView)v.findViewById(R.id.text1)).getText().toString();
+				for(Contacts c : contacts) {
+					if(c.getName().equals(name)) {
+						dbHelper.deleteContact(c);
+						contacts.remove(c);
+						names.remove(c.getName());
+					}
+				}
+			}
+		}
+	}
 
+	private void saveContact(String name, String phone) {
+		dbHelper.addContacts(new Contacts(name, phone));
+		contacts.add(new Contacts(name, phone));
+		names.add(name);
+		namesA = new String[names.size()];
+		for(int i=0; i<names.size(); i++){
+			namesA[i] = names.get(i);
+		}
+		adapter.notifyDataSetChanged();
+	}
+
+	public void selected(View v) {
+		if(v.getId() == 0){
+			((ImageButton) v).setImageResource(R.drawable.ic_action_accept);
+			v.setId(1);
+		} else {
+			((ImageButton) v).setImageResource(R.drawable.ic_launcher);
+			v.setId(0);
+		}
 	}
 	
-	private void saveContact(String name, String phone) {
-		
-	}
 }

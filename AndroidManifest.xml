@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LaunchActivity"
-            android:label="Be safe. Don't drink \u0026 drive."
+            android:label="Sobriety"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

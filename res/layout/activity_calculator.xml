@@ -125,15 +125,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOW MANY"
-                android:textColor="#FFFFFF"
-                android:textSize="50sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HAVE YOU HAD?"
+                android:gravity="center"
+                android:text="HOW MANY HAVE YOU HAD?"
                 android:textColor="#FFFFFF"
                 android:textSize="50sp"
                 android:textStyle="bold" />
