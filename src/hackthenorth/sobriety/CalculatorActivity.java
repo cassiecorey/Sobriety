@@ -153,7 +153,7 @@ public void LBS(View v){
 		NumberPicker minutes = (NumberPicker) findViewById(R.id.minutes);
 		NumberPicker ampm = (NumberPicker) findViewById(R.id.ampm);
 		
-		hours.setMinValue(0);
+		hours.setMinValue(1);
 		hours.setMaxValue(12);
 		minutes.setMinValue(0);
 		minutes.setMaxValue(59);
