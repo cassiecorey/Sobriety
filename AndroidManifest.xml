@@ -26,23 +26,23 @@
         <activity
             android:name=".CalculatorActivity"
             android:label="Stick with a buddy."
-            android:screenOrientation="portrait"
-            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ContactsActivity"
             android:label="Be safe."
-            android:screenOrientation="portrait"
-            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".GetHomeActivity"
             android:label="Speak up. Say NO."
-            android:screenOrientation="portrait"
-            android:parentActivityName="hackthenorth.sobriety.LaunchActivity" >
+            android:parentActivityName="hackthenorth.sobriety.LaunchActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
-    
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

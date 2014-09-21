@@ -203,7 +203,18 @@ public class ContactsActivity extends ActionBarActivity {
 	}
 
 	public void makeCall(View v) {
-
+		TextView t = (TextView)v.findViewById(R.id.text1);
+		String name = t.getText().toString().trim();
+		String number = "";
+		for(Contacts c: contacts) {
+			if(c.getName().equals(name)) {
+				number = c.getPhone(); break;
+			}
+		}
+		number = "tel:" + number;
+		Intent intent = new Intent(Intent.ACTION_CALL);
+		intent.setData(Uri.parse(number));
+		startActivity(intent);
 	}
 
 }
