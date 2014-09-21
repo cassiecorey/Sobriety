@@ -90,7 +90,7 @@ public class CalculatorActivity extends Activity {
 public void LBS(View v){
 	
 		Button button = (Button) findViewById(R.id.weight_type);
-		if(button.getText().toString() == "lbs"){
+		if(button.getText().toString().contains("lbs")){
 			button.setText("kgs");
 			NumberPicker weightPicker = (NumberPicker) findViewById(R.id.weight_picker);
 			weightPicker.setMinValue(40);
@@ -182,7 +182,7 @@ public void LBS(View v){
 		int currentMinute = c.get(Calendar.MINUTE);
 		int currentAMPM = c.get(Calendar.AM_PM);
 		int elapsedHours;
-		
+		int weight;
 		
 		
 		viewFlipper.showNext();
@@ -206,15 +206,21 @@ public void LBS(View v){
 			}
 		}
 		
+		if(weightLBS == 0){
+			weight = weightKgs;
+		}
+		else{
+			weight = weightLBS;
+		}
 		int SD = 2*bCount + 3*wCount + 1*lCount;
 		double MR;
 		double DP = elapsedHours;
 			
 		if(gender == 'm'){
-			BAC = (.806*SD*1.2)/(weightLBS *.58)-(.015*DP);
+			BAC = ((.806*SD*1.2)/(weight *.58))-(.015*DP);
 		}
 		if(gender == 'f'){
-			BAC = (.806*SD*1.2)/(weightLBS *.49)-(.017*DP);
+			BAC = ((.806*SD*1.2)/(weight *.49))-(.017*DP);
 		}
 		TextView drunkLevel = (TextView) findViewById(R.id.drunklevel);
 		String level = "sober.";
@@ -233,6 +239,9 @@ public void LBS(View v){
 		drunkLevel.setText(level);
 		if(level.length()>7) {
 			drunkLevel.setTextSize(30);
+		}
+		if(BAC < 0){
+			BAC = 0;
 		}
 		
 		DecimalFormat twoDForm = new DecimalFormat("#.###"); 
