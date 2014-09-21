@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -52,11 +53,11 @@ public class ContactsActivity extends ActionBarActivity {
 			TextView txtTitle = (TextView) rowView.findViewById(R.id.text1);
 			ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
 			imageView.setImageResource(R.drawable.ic_launcher);
-			imageView.setId(0);
+			imageView.setTag(false);
 			txtTitle.setText(web[position]);
 			return rowView;
 		}
-		
+
 		public void setData(String[] n) {
 			namesA = n;
 			Handler handler = new Handler(Looper.getMainLooper());
@@ -89,7 +90,6 @@ public class ContactsActivity extends ActionBarActivity {
 		adapter = new CustomList(this, namesA, R.drawable.ic_launcher);
 		list = (ListView)findViewById(R.id.list);
 		list.setAdapter(adapter);
-
 
 	}
 
@@ -152,18 +152,23 @@ public class ContactsActivity extends ActionBarActivity {
 
 
 	private void deleteContacts() {
+		ArrayList<Contacts> deleteContacts = new ArrayList<Contacts>();
 		for(int i=0; i<list.getCount(); i++) {
 			View v = list.getChildAt(i);
-			if(v.getId()==1) {
+			ImageView iv = (ImageView)v.findViewById(R.id.img);
+			if(iv.getTag() != null && iv.getTag().equals(true)) {
 				String name = ((TextView)v.findViewById(R.id.text1)).getText().toString();
 				for(Contacts c : contacts) {
 					if(c.getName().equals(name)) {
-						dbHelper.deleteContact(c);
-						contacts.remove(c);
-						names.remove(c.getName());
+						deleteContacts.add(c);
 					}
 				}
 			}
+		}
+		for(Contacts c : deleteContacts) {
+			dbHelper.deleteContact(c);
+			contacts.remove(c);
+			names.remove(c.getName());
 		}
 		adapter.notifyDataSetChanged();
 		Intent intent = new Intent(this, ContactsActivity.class);
@@ -188,13 +193,17 @@ public class ContactsActivity extends ActionBarActivity {
 	}
 
 	public void selected(View v) {
-		if(v.getId() == 0){
+		if(v.getTag().equals(false)){
 			((ImageButton) v).setImageResource(R.drawable.ic_action_accept);
-			v.setId(1);
+			v.setTag(true);
 		} else {
 			((ImageButton) v).setImageResource(R.drawable.ic_launcher);
-			v.setId(0);
+			v.setTag(false);
 		}
 	}
-	
+
+	public void makeCall(View v) {
+
+	}
+
 }
