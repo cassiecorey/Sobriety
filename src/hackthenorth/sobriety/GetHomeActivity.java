@@ -1,9 +1,10 @@
 package hackthenorth.sobriety;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -42,14 +43,21 @@ public class GetHomeActivity extends Activity {
 	}
 	
 	public void walk(View v) {
-		
+		showMap();
 	}
 	
 	public void catchABus(View v) {
-		
+		showMap();
 	}
 	
 	public void callACab(View v) {
 		
+	}
+	
+	public void showMap() {
+		String uri = "http://maps.google.com/";
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+        startActivity(intent);
 	}
 }
