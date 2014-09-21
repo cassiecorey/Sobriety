@@ -19,8 +19,8 @@
         android:text="SOBER PEOPLE"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="#FFC300"
-        android:background="#00FFDD"
+        android:textColor="#AE00FF"
+        android:background="#00FF26"
         android:onClick="callSomebody"/>
     
     <Button 
@@ -30,10 +30,10 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_margin="20dp"
-        android:textColor="#00FFDD"
+        android:textColor="#00FF26"
         android:layout_weight="1"
         android:text="HOW DRUNK AM I?"
-        android:background="#FFC300"
+        android:background="#AE00FF"
         android:onClick="openCalculator"/>
     
     <Button
@@ -43,10 +43,10 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_margin="20dp"
-        android:textColor="#FFC300"
+        android:textColor="#AE00FF"
         android:layout_weight="1"
         android:text="GET HOME"
-        android:background="#00FFDD"
+        android:background="#00FF26"
         android:onClick="getHome" />
 
 </LinearLayout>

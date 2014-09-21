@@ -8,7 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,10 +52,20 @@ public class ContactsActivity extends ActionBarActivity {
 			TextView txtTitle = (TextView) rowView.findViewById(R.id.text1);
 			ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
 			imageView.setImageResource(R.drawable.ic_launcher);
-			imageView.setVisibility(View.INVISIBLE);
 			imageView.setId(0);
 			txtTitle.setText(web[position]);
 			return rowView;
+		}
+		
+		public void setData(String[] n) {
+			namesA = n;
+			Handler handler = new Handler(Looper.getMainLooper());
+			handler.post(new Runnable() {
+				@Override
+				public void run() {
+					notifyDataSetChanged();
+				}
+			});
 		}
 	}
 
@@ -152,6 +165,10 @@ public class ContactsActivity extends ActionBarActivity {
 				}
 			}
 		}
+		adapter.notifyDataSetChanged();
+		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 	private void saveContact(String name, String phone) {
@@ -162,7 +179,12 @@ public class ContactsActivity extends ActionBarActivity {
 		for(int i=0; i<names.size(); i++){
 			namesA[i] = names.get(i);
 		}
+		list.setAdapter(adapter);
+		adapter.setData(namesA);
 		adapter.notifyDataSetChanged();
+		Intent intent = new Intent(this, ContactsActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 	public void selected(View v) {
